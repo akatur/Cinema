@@ -102,35 +102,9 @@ public class MoveCard : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Недостаточно объектов в инспекторе");
+                Debug.LogWarning("нет объектов в инспекторе");
                 break;
             }
-
-
-            //like
-            //if (card3Index < btnLike.Length)
-            //{
-            //    string movieTitle = reader.GetString("title");
-            //    string movieURL = reader.GetString("url_move");
-            //    int movieId = reader.GetInt32("movie_id");
-
-            //    Text cardText2 = btnLike[card3Index].GetComponentInChildren<Text>();
-
-
-            //    Button cardButton = btnLike[card3Index].GetComponent<Button>();
-
-            //    if (cardButton != null)
-            //    {
-            //        cardButton.onClick.AddListener(() => AddToLike(movieId, movieTitle));
-            //    }
-
-            //    card3Index++;
-            //}
-            //else
-            //{
-            //    Debug.LogWarning("Недостаточно объектов в инспекторе");
-            //    break;
-            //}
 
             if (card3Index < btnLike.Length)
             {
@@ -152,7 +126,7 @@ public class MoveCard : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Недостаточно объектов в инспекторе");
+                Debug.LogWarning("нет объектов в инспекторе");
                 break;
             }
 
@@ -249,109 +223,4 @@ public class MoveCard : MonoBehaviour
     }
 
 
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-//private void Start()
- //{
- //    connection = new MySqlConnection(connectionString);
- //    connection.Open();
-
-//    string sqlQuery = "SELECT `title`, `url_move`, `movie_id` FROM `movies`";
-
-//    MySqlCommand cmd = new MySqlCommand(sqlQuery, connection);
-//    MySqlDataReader reader = cmd.ExecuteReader();
-
-//    int cardIndex = 0;
-//    int card2Index = 0;
-//    int card3Index = 0;
-
-//    while (reader.Read())
-//    {
-//        if (cardIndex < btnCard.Length)
-//        {
-//            string movieTitle = reader.GetString(0);
-//            string movieURL = reader.GetString(1);
-//            int movieId = reader.GetInt32(2);
-
-//            Text cardText = btnCard[cardIndex].GetComponentInChildren<Text>();
-//            cardText.text = movieTitle;
-
-//            Button cardButton = btnCard[cardIndex].GetComponent<Button>();
-
-//            if (cardButton != null)
-//            {
-//                cardButton.onClick.AddListener(() => PlayMovie(movieURL, movieId, movieTitle));
-//                cardButton.onClick.AddListener(() => AddToWatched(movieId, movieTitle));
-//            }
-
-//            cardIndex++;
-//        }
-
-
-//        //favorit
-//         if (card2Index < btnFavorit.Length)
-//        {
-//            string movieTitle = reader.GetString(0);
-//            string movieURL = reader.GetString(1);
-//            int movieId = reader.GetInt32(2);
-
-//            Text cardText1 = btnFavorit[card2Index].GetComponentInChildren<Text>();
-
-
-//            Button cardButton = btnFavorit[card2Index].GetComponent<Button>();
-
-//            if (cardButton != null)
-//            {
-//                cardButton.onClick.AddListener(() => AddToFavorites(movieId, movieTitle));
-//            }
-
-//            card2Index++;
-//        }
-//        else
-//        {
-//            Debug.LogWarning("Недостаточно объектов в инспекторе");
-//            break;
-//        }
-
-
-//         //like
-//        if (card3Index < btnLike.Length)
-//        {
-//            string movieTitle = reader.GetString(0);
-//            string movieURL = reader.GetString(1);
-//            int movieId = reader.GetInt32(2);
-
-//            Text cardText2 = btnLike[card3Index].GetComponentInChildren<Text>();
-
-
-//            Button cardButton = btnLike[card3Index].GetComponent<Button>();
-
-//            if (cardButton != null)
-//            {
-//                cardButton.onClick.AddListener(() => AddToLike(movieId, movieTitle));
-//            }
-
-//            card3Index++;
-//        }
-//        else
-//        {
-//            Debug.LogWarning("Недостаточно объектов в инспекторе");
-//            break;
-//        }
-
-//    }
-//    reader.Close();
-//    connection.Close();
-//}

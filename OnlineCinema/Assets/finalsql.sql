@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `cinemadb`.`movies` (
   PRIMARY KEY (`movie_id`))
 ENGINE = InnoDB;
 
-movies
+
 -- -----------------------------------------------------
 -- Table `cinemadb`.`like`
 -- -----------------------------------------------------
@@ -130,7 +130,7 @@ DROP TABLE IF EXISTS `cinemadb`.`genres` ;
 
 CREATE TABLE IF NOT EXISTS `cinemadb`.`genres` (
   `genre_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `namegGenres` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`genre_id`))
 ENGINE = InnoDB;
 
