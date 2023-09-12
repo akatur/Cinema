@@ -212,7 +212,7 @@ public class DBmanager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Что-то не так");
+                Debug.Log("Чтото не так");
             }
         }
     }
@@ -230,7 +230,9 @@ public class DBmanager : MonoBehaviour
                 try
                 {
                     query = $"Insert Into users (login,password,username) " +
-                   $"Values ('{InputLogReg.text.Trim()}','{InputPwdReg.text.Trim()}','{InputNicknameReg.text.Trim()}')";
+                   $"Values ('{InputLogReg.text.Trim()}'," +
+                   $"'{InputPwdReg.text.Trim()}'," +
+                   $"'{InputNicknameReg.text.Trim()}')";
                     var command = new MySqlCommand(query, con);
                     command.ExecuteNonQuery();
                     UserInfo.user_id = command.LastInsertedId.ToString();
