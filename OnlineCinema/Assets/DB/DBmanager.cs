@@ -9,6 +9,7 @@ using System.Data;
 using UnityEngine.Video;
 using UnityEditor.MemoryProfiler;
 using static DBmanager;
+using UnityEditor.Search;
 
 public static class ConnectionInfo
 {
@@ -82,6 +83,9 @@ public class DBmanager : MonoBehaviour
         try
         {
             con.Open();
+
+            AddMovie();
+
         }
         catch (Exception ex)
         {
@@ -89,10 +93,82 @@ public class DBmanager : MonoBehaviour
         }
     }
 
+
+    public InputField InputNameMovie;
+    public InputField InputNameGenre;
+    public InputField InputUrlMovie;
+    
+    private void AddMovie( )
+    {
+        string query = "Insert Into movies (movie_id,title,url_move) VALUES (@movieId, @title, @url_move)";
+
+        string namemove = InputNameMovie.text.Trim();
+        string nameGenre = InputNameGenre.text.Trim();
+        string urlMovie = InputUrlMovie.text.Trim();
+        
+        if (namemove == "" || nameGenre == "" || urlMovie == "" || InputNicknameReg.text.Trim() == "")
+        {
+            Debug.Log("Введите данные о фильме");
+        }
+        else
+        {
+            if (GetRegUser())
+            {
+                Debug.Log("Данные приняты");
+
+                CanvasRegLog.SetActive(true);
+                movePlayerComponent.enabled = true;
+                menuUi.enabled = true;
+                videoCon.enabled = true;
+                canvasMenuUI.SetActive(true);
+
+            }
+            else
+            {
+                Debug.Log("Чтото не так");
+            }
+        }
+    }
+
+    public bool GetAddMovie()
+    {
+        string query = $"Select * From users where login = '{InputLogReg.text.Trim()}'";
+        if (isAny(query))
+        {
+            Debug.Log("нет доступа");
+            return false;
+        }
+        else
+        {
+            try
+            {
+                query = $"Insert Into users (login,password,username) " +
+               $"Values ('{InputLogReg.text.Trim()}'," +
+               $"'{InputPwdReg.text.Trim()}'," +
+               $"'{InputNicknameReg.text.Trim()}')";
+                var command = new MySqlCommand(query, con);
+                command.ExecuteNonQuery();
+                UserInfo.user_id = command.LastInsertedId.ToString();
+                command.Dispose();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.Log(ex);
+                return false;
+            }
+        }
+    }
+
+
+
+
+
     private void OnApplicationQuit()
     {
         con.Close();
     }
+
 
 
     public void LoginUser()
